@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "828c2cbe-9a03-4cc8-a95e-a7386047e253",
+		"name": "Booking Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23724281"
+	},
+	"item": [
+		{
+			"name": "Check COnnection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Seats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/seats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"seats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Seat Pricing",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/seats/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"seats",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"seats\" : [\"029228116-1\",\"616679240-9\"],\n    \"name\" : \"Surya\",\n    \"phone\" : \"123456789\",\n    \"email\" : \"surya@surya.com\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/booking",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Booking",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/bookings?userIdentifier=123456789",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookings"
+					],
+					"query": [
+						{
+							"key": "userIdentifier",
+							"value": "123456789"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
