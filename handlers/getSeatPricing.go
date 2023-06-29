@@ -42,7 +42,7 @@ func GetSeatPricing(w http.ResponseWriter, r *http.Request) {
 		Price:       price,
 	}
 
-	// Convert the response struct to JSON
+	
 	responseJSON, err := json.Marshal(response)
 	if err != nil {
 		log.Println("Error converting response to JSON:", err)

@@ -16,19 +16,19 @@ type GetBookingsResponse struct {
 }
 
 func GetBookings(w http.ResponseWriter, r *http.Request) {
-	// Retrieve the user identifier from the query parameters
+	
 	userIdentifier := r.URL.Query().Get("userIdentifier")
 	// vars := mux.Vars(r)
 	// userIdentifier := vars["userIdentifier"]
 
-	// Validate the user identifier
+	
 	if userIdentifier == "" {
 		fmt.Println("testinggggg")
 		http.Error(w, "User identifier is required", http.StatusBadRequest)
 		return
 	}
 
-	// Retrieve the bookings from the database
+	
 	bookings, err := database.GetBookingsByUserIdentifier(userIdentifier)
 	if err != nil {
 		log.Println("Error retrieving bookings:", err)
@@ -36,12 +36,12 @@ func GetBookings(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Prepare the response
+	
 	response := GetBookingsResponse{
 		Bookings: bookings,
 	}
 
-	// Convert the response struct to JSON
+	
 	responseJSON, err := json.Marshal(response)
 	if err != nil {
 		log.Println("Error converting response to JSON:", err)
