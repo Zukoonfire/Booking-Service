@@ -22,7 +22,7 @@ type CreateBookingResponse struct {
 }
 
 func CreateBooking(w http.ResponseWriter, r *http.Request) {
-
+	
 	fmt.Println("ggggggggg")
 	var req CreateBookingRequest
 	err := json.NewDecoder(r.Body).Decode(&req)
@@ -32,11 +32,13 @@ func CreateBooking(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	
 	if len(req.Seats) == 0 || req.Name == "" || req.Email == "" || req.Phone == "" {
 		http.Error(w, "Invalid request data", http.StatusBadRequest)
 		return
 	}
 
+	
 	var totalAmount float64
 	for _, seatID := range req.Seats {
 		pricing, err := database.GetSeatPricing(seatID)
@@ -54,6 +56,7 @@ func CreateBooking(w http.ResponseWriter, r *http.Request) {
 		totalAmount += price.Float64
 	}
 
+	
 	bookingID, err := database.CreateBooking(req.Seats, req.Name, req.Email, req.Phone, totalAmount)
 	if err != nil {
 		log.Println("Error creating booking:", err)
@@ -61,11 +64,13 @@ func CreateBooking(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+
 	response := CreateBookingResponse{
 		BookingID: bookingID,
 		Amount:    totalAmount,
 	}
 
+	
 	responseJSON, err := json.Marshal(response)
 	if err != nil {
 		log.Println("Error converting response to JSON:", err)
